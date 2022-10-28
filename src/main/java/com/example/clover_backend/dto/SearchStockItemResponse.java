@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StockItemResponse {
+public class SearchStockItemResponse {
     private String code;
     private String name;
 

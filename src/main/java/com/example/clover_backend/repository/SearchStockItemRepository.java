@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface StockItemRepository extends JpaRepository<StockItem, String> {
+public interface SearchStockItemRepository extends JpaRepository<StockItem, String> {
 
     @Query(value =
             "select * " +

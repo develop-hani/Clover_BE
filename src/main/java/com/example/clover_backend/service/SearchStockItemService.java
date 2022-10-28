@@ -1,8 +1,8 @@
 package com.example.clover_backend.service;
 
-import com.example.clover_backend.dto.StockItemResponse;
+import com.example.clover_backend.dto.SearchStockItemResponse;
 import com.example.clover_backend.repository.StockItem;
-import com.example.clover_backend.repository.StockItemRepository;
+import com.example.clover_backend.repository.SearchStockItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,22 +11,22 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class StockItemService {
-    private final StockItemRepository stockItemRepository;
+public class SearchStockItemService {
+    private final SearchStockItemRepository stockItemRepository;
 
-    public List<StockItemResponse> getStockItems() {
+    public List<SearchStockItemResponse> getStockItems() {
         return stockItemRepository.findAll().stream()
                 .map(StockItem::stockItemResponse)
                 .collect(Collectors.toList());
     }
 
-    public List<StockItemResponse> searchStockItems(String keyword) throws StockItemNotFoundException{
+    public List<SearchStockItemResponse> searchStockItems(String keyword) throws SearchStockItemNotFoundException {
         try {
             return stockItemRepository.findByStockItem(keyword).stream()
                     .map(StockItem::stockItemResponse)
                     .collect(Collectors.toList());
         } catch (Exception exception) {
-            throw new StockItemNotFoundException(keyword);
+            throw new SearchStockItemNotFoundException(keyword);
         }
 
     }

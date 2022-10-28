@@ -1,6 +1,6 @@
 package com.example.clover_backend.repository;
 
-import com.example.clover_backend.dto.StockItemResponse;
+import com.example.clover_backend.dto.SearchStockItemResponse;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -20,8 +20,8 @@ public class StockItem {
     @Column(name="name")
     private String name; // 기업이름
 
-    public StockItemResponse stockItemResponse() {
-        return StockItemResponse.builder()
+    public SearchStockItemResponse stockItemResponse() {
+        return SearchStockItemResponse.builder()
                 .code(code)
                 .name(name)
                 .build();
