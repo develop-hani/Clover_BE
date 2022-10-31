@@ -6,12 +6,12 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SearchStockItemRepository extends JpaRepository<StockItem, String> {
+public interface StockItemSearchRepository extends JpaRepository<StockItem, String> {
 
     @Query(value =
             "select * " +
                     "from stockitems " +
                     "where name like %:keyword% or code like %:keyword%", nativeQuery = true)
-    List<StockItem> findByStockItem(@Param("keyword") String keyword);
+    List<StockItem> findByKeyword(@Param("keyword") String keyword);
 
 }
