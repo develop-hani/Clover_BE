@@ -16,8 +16,8 @@ public class ReadSignal {
 
         JSONParser jsonParser  = new JSONParser();
 
-        // Reader reader = new FileReader("/home/ubuntu/python/signal.json");
-        String path = "signal.json";
+        String path = "/home/ubuntu/python/signal.json";
+        //String path = "signal.json";
         FileReader rd = new FileReader(path);
         JSONObject jsonObject = (JSONObject) jsonParser.parse(rd);
 
