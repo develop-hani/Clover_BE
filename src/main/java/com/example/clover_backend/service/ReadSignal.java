@@ -16,8 +16,8 @@ public class ReadSignal {
 
         JSONParser jsonParser  = new JSONParser();
 
-        String path = "/home/ubuntu/python/signal.json";
-        //String path = "signal.json";
+        String path = "/home/ubuntu/Python/signal.json";
+        // String path = "signal.json";
         FileReader rd = new FileReader(path);
         JSONObject jsonObject = (JSONObject) jsonParser.parse(rd);
 
@@ -29,6 +29,8 @@ public class ReadSignal {
         long close = (Long) jsonObject.get("close");
         long signal = (Long) jsonObject.get("signal");
         String reliability = (String) jsonObject.get("신뢰도");
+
+        rd.close();
 
         return SignalResponse.builder()
                 .stockCode(stockCode)

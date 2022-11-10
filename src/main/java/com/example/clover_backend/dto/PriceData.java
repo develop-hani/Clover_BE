@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DataResponse {
-    private String date;
-    private PriceData priceData;
+public class PriceData {
+    private long open;
+    private long high;
+    private long low;
+    private long close;
 }
