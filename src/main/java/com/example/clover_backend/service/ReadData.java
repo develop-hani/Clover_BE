@@ -2,7 +2,6 @@ package com.example.clover_backend.service;
 
 import com.example.clover_backend.dto.DataResponse;
 import com.example.clover_backend.dto.PriceData;
-import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -16,7 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ReadData {
     public List<DataResponse> readData() throws IOException, ParseException {
 
@@ -26,16 +24,10 @@ public class ReadData {
 
         JSONParser jsonParser  = new JSONParser();
 
-        String path = "/home/ubuntu/Python/Price.json";
-        // String path = "Price.json";
-
-        //FileReader rd = new FileReader(path);
-        //JSONObject jsonObject = (JSONObject) jsonParser.parse(rd);
-
+        String path = "/home/ubuntu/Clover_Project/Python/Price.json";
         String str = Files.readString(Path.of(path));
         str = str.replace("\\", "");
-        str = str.substring(1, str.length() - 1);
-        System.out.println(str);
+        str = str.substring(2, str.length() - 1);
         JSONObject jsonObject = (JSONObject) jsonParser.parse(str);
 
         Iterator i = jsonObject.keySet().iterator();
@@ -66,7 +58,6 @@ public class ReadData {
                             .build();
             responseList.add(tmpdata);
         }
-        // reader.close();
 
         return responseList;
     }

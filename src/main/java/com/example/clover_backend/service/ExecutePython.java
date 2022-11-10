@@ -19,7 +19,7 @@ public class ExecutePython {
     public void executePython() {
         try {
             String command = "python3 base.py";
-            Process process = Runtime.getRuntime().exec(command, null, new File("/home/ubuntu/Python"));
+            Process process = Runtime.getRuntime().exec(command, null, new File("/home/ubuntu/Clover_Project/Python"));
 
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(process.getInputStream()));

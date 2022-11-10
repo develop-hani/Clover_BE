@@ -14,7 +14,7 @@ public class WriteInfo {
         JSONObject obj = new JSONObject();
         obj.put("stock_code", stockCode);
 
-        FileWriter file = new FileWriter("/home/ubuntu/Python/info.json");
+        FileWriter file = new FileWriter("/home/ubuntu/Clover_Project/Python/info.json");
         //FileWriter file = new FileWriter("info.json");
         file.write(obj.toJSONString());
         file.flush();
