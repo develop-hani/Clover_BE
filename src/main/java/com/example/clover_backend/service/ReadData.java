@@ -11,16 +11,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 @Service
 public class ReadData {
-    public List<DataResponse> readData() throws IOException, ParseException {
+    public List<HashMap<String, PriceData>> readData() throws IOException, ParseException {
 
         List<String> dateList = new ArrayList<>();
         List<PriceData> priceList = new ArrayList<>();
-        List<DataResponse> responseList = new ArrayList<>();
+        List<HashMap<String, PriceData>> responseList = new ArrayList<>();
 
         JSONParser jsonParser  = new JSONParser();
 
@@ -52,12 +53,10 @@ public class ReadData {
                     .build());
         }
         for (int c = 0; c < priceList.size(); c++) {
-            DataResponse tmpdata = DataResponse.builder()
-                            .date(dateList.get(c))
-                            .priceData(priceList.get(c))
-                            .build();
-            responseList.add(tmpdata);
-        }
+            HashMap<String, PriceData> tmp = new HashMap<>();
+            tmp.put(dateList.get(c), priceList.get(c));
+
+            responseList.add(tmp);        }
 
         return responseList;
     }

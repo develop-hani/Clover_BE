@@ -30,7 +30,7 @@ public class SignalAndDataController {
     }
 
     @GetMapping("/data")
-    public List<DataResponse> getData(@RequestParam String itemCode) throws IOException, ParseException {
+    public List<HashMap<String, PriceData>> getData(@RequestParam String itemCode) throws IOException, ParseException {
         return signalAndDataService.getData(itemCode);
     }
 

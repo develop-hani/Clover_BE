@@ -43,7 +43,7 @@ public class SignalAndDataService {
         return readSignal.readSignal();
     }
 
-    public List<DataResponse> getData(String itemCode) throws IOException, ParseException {
+    public List<HashMap<String, PriceData>> getData(String itemCode) throws IOException, ParseException {
         return readData.readData();
     }
 }
