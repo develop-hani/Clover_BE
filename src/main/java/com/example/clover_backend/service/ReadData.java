@@ -40,16 +40,16 @@ public class ReadData {
         for (int a = 0; a < dateList.size(); a++) {
             JSONObject priceObject = (JSONObject) jsonObject.get(dateList.get(a));
 
-            long open = (long) priceObject.get("Open");
-            long high = (long) priceObject.get("High");
-            long low = (long) priceObject.get("Low");
-            long close = (long) priceObject.get("Close");
+            long Open = (long) priceObject.get("Open");
+            long High = (long) priceObject.get("High");
+            long Low = (long) priceObject.get("Low");
+            long Close = (long) priceObject.get("Close");
 
             priceList.add(PriceData.builder()
-                    .open(open)
-                    .high(high)
-                    .low(low)
-                    .close(close)
+                    .Open(Open)
+                    .High(High)
+                    .Low(Low)
+                    .Close(Close)
                     .build());
         }
         for (int c = 0; c < priceList.size(); c++) {

@@ -34,7 +34,7 @@ public class ReadSignal {
         String reliability = (String) jsonObject.get("신뢰도");
 
         return SignalResponse.builder()
-                .stockCode(stockCode)
+                .stock_code(stockCode)
                 .date(date)
                 .open(open)
                 .high(high)

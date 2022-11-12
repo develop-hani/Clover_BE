@@ -10,9 +10,9 @@ import java.nio.file.Paths;
 
 @Service
 public class WriteInfo {
-    public void writeStockCode(String stockCode) throws IOException{
+    public void writeStockCode(String stock_code) throws IOException{
         JSONObject obj = new JSONObject();
-        obj.put("stock_code", stockCode);
+        obj.put("stock_code", stock_code);
 
         FileWriter file = new FileWriter("/home/ubuntu/Clover_Project/Python/info.json");
         //FileWriter file = new FileWriter("info.json");

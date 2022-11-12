@@ -29,12 +29,12 @@ public class SignalAndDataService {
     // 2. Python에서 받은 시그널 + _10년치 데이터_ => React로 넘기기(JSON)
     // 3. <2>의 10년치 데이터가 업데이트 되었다면 DB upgrade
 
-    public SignalResponse getSignal(String itemCode) throws IOException, ParseException {
+    public SignalResponse getSignal(String stock_code) throws IOException, ParseException {
         // 1-1. python에 10년 치 데이터 넘기기(.csv)
         // kospiCSV.writeCSV();
 
         // 1-2. python에 종목코드 넘기기(info.json)
-        writeInfo.writeStockCode(itemCode);
+        writeInfo.writeStockCode(stock_code);
 
         // python 코드 실행
         executePython.executePython();
@@ -43,7 +43,7 @@ public class SignalAndDataService {
         return readSignal.readSignal();
     }
 
-    public List<HashMap<String, PriceData>> getData(String itemCode) throws IOException, ParseException {
+    public List<HashMap<String, PriceData>> getData(String stock_code) throws IOException, ParseException {
         return readData.readData();
     }
 }

@@ -12,8 +12,8 @@ import java.util.HashMap;
 @AllArgsConstructor
 @Builder
 public class PriceData{
-    private long open;
-    private long high;
-    private long low;
-    private long close;
+    private long Open;
+    private long High;
+    private long Low;
+    private long Close;
 }

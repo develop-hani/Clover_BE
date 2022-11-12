@@ -25,13 +25,13 @@ public class SignalAndDataController {
     private final SignalAndDataService signalAndDataService;
 
     @GetMapping("/signal")
-    public SignalResponse getSignal(@RequestParam String itemCode) throws IOException, ParseException {
-        return signalAndDataService.getSignal(itemCode);
+    public SignalResponse getSignal(@RequestParam String stock_code) throws IOException, ParseException {
+        return signalAndDataService.getSignal(stock_code);
     }
 
     @GetMapping("/data")
-    public List<HashMap<String, PriceData>> getData(@RequestParam String itemCode) throws IOException, ParseException {
-        return signalAndDataService.getData(itemCode);
+    public List<HashMap<String, PriceData>> getData(@RequestParam String stock_code) throws IOException, ParseException {
+        return signalAndDataService.getData(stock_code);
     }
 
 }

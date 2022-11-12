@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class SignalResponse {
-    private String stockCode;
+    private String stock_code;
     private String date;
     private long open;
     private long high;
