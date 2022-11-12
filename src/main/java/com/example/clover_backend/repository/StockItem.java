@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Getter
+@Setter
 @Entity
 @Table(name="stockitems")
 public class StockItem {
