@@ -4,6 +4,7 @@ import com.example.clover_backend.dto.StockItemSearchResponse;
 import com.example.clover_backend.repository.StockItem;
 import com.example.clover_backend.repository.StockItemSearchRepository;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -24,13 +25,15 @@ public class StockItemSearchService {
                 .collect(Collectors.toList());
     }
 
-    public List<StockItemSearchResponse> searchStockItems(String keyword) throws StockItemSearchNotFoundException {
+    public List<StockItemSearchResponse> searchStockItems(JSONObject item) throws StockItemSearchNotFoundException {
+	JSONObject data = new JSONObject(item);
+        	String word = data.get("keyword").toString();	
         try {
-            return stockItemRepository.findByKeyword(keyword).stream()
+            return stockItemRepository.findByKeyword(word).stream()
                     .map(StockItem::stockItemResponse)
                     .collect(Collectors.toList());
         } catch (Exception exception) {
-            throw new StockItemSearchNotFoundException(keyword);
+            throw new StockItemSearchNotFoundException(word);
         }
 
     }

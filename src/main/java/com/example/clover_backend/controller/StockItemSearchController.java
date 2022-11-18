@@ -3,6 +3,7 @@ package com.example.clover_backend.controller;
 import com.example.clover_backend.dto.StockItemSearchResponse;
 import com.example.clover_backend.service.StockItemSearchService;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,8 @@ public class StockItemSearchController {
         return stockItemService.allStockItems();
     }
 
-    @GetMapping("/eachItem")
-    public List<StockItemSearchResponse> searchStockItems(@RequestParam String keyword) {
-        return stockItemService.searchStockItems(keyword);
+    @PostMapping("/eachItem")
+    public List<StockItemSearchResponse> searchStockItems(@RequestBody JSONObject item) {
+        return stockItemService.searchStockItems(item);
     }
 }

@@ -11,7 +11,7 @@ public interface StockItemSearchRepository extends JpaRepository<StockItem, Stri
     @Query(value =
             "select * " +
                     "from stockitems " +
-                    "where name like %:keyword% or code like %:keyword%", nativeQuery = true)
-    List<StockItem> findByKeyword(@Param("keyword") String keyword);
+                    "where name like %:word% or code like %:word%", nativeQuery = true)
+    List<StockItem> findByKeyword(@Param("word") String word);
 
 }
