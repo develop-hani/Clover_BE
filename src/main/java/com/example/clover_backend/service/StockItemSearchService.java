@@ -39,10 +39,9 @@ public class StockItemSearchService {
     }
 
     // excute at 09:05:00 everyday
-    @Scheduled(cron = "0 30 23 * * *")
+    @Scheduled(cron = "0 5 9 * * *",  zone = "Asia/Seoul")
     public void DBUpdate() throws IOException, ParseException {
         stockItemRepository.deleteAll();
-        List<StockItem> stockItems = readList.readList();
-        stockItemRepository.saveAll(stockItems);
+	readList.readList();
     }
 }

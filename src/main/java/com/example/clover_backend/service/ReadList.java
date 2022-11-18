@@ -1,6 +1,8 @@
 package com.example.clover_backend.service;
 
 import com.example.clover_backend.repository.StockItem;
+import com.example.clover_backend.repository.StockItemSearchRepository;
+import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -14,11 +16,14 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ReadList {
-    public List<StockItem> readList() throws IOException, ParseException {
+    private final StockItemSearchRepository stockItemRepository;
+
+    public void readList() throws IOException, ParseException {
         List<String> idx = new ArrayList<>();
         List<StockItem> updateStockItems = new ArrayList<>();
-        StockItem stockItem = null;
+        StockItem data = new StockItem();
 
         JSONParser jsonParser = new JSONParser();
         String path = "/home/ubuntu/Clover_Project/Python/listing.json";
@@ -27,7 +32,7 @@ public class ReadList {
         str = str.substring(2, str.length() - 1);
         JSONObject jsonObject = (JSONObject) jsonParser.parse(str);
 
-        System.out.println(jsonObject);
+        // System.out.println(jsonObject);
 
         Iterator i = jsonObject.keySet().iterator();
         while (i.hasNext()) {
@@ -36,14 +41,13 @@ public class ReadList {
         }
         for (int a = 0; a < idx.size(); a++) {
             JSONObject priceObject = (JSONObject) jsonObject.get(idx.get(a));
-            String code = (String) priceObject.get("code");
+            String code = (String) priceObject.get("Code");
             String name = (String) priceObject.get("Name");
 
-            stockItem.setCode(code);
-            stockItem.setName(name);
+            data.setCode(code);
+            data.setName(name);
 
-            updateStockItems.add(stockItem);
+            stockItemRepository.save(data);
         }
-        return updateStockItems;
     }
 }
