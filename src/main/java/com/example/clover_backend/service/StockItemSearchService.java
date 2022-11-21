@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 public class StockItemSearchService {
     private final StockItemSearchRepository stockItemRepository;
     private final ReadList readList;
+    private final WriteInfo writeInfo;
+    private final ExecutePython executePython;
 
     public List<StockItemSearchResponse> allStockItems() {
         return stockItemRepository.findAll().stream()
@@ -25,9 +27,10 @@ public class StockItemSearchService {
                 .collect(Collectors.toList());
     }
 
+    /*
     public List<StockItemSearchResponse> searchStockItems(JSONObject item) throws StockItemSearchNotFoundException {
-	JSONObject data = new JSONObject(item);
-        	String word = data.get("keyword").toString();	
+        JSONObject data = new JSONObject(item);
+        String word = data.get("keyword").toString();
         try {
             return stockItemRepository.findByKeyword(word).stream()
                     .map(StockItem::stockItemResponse)
@@ -37,11 +40,21 @@ public class StockItemSearchService {
         }
 
     }
+     */
+    
+    public void searchStockItems(JSONObject item) throws IOException {
+        // write stock_code(info.json)
+        System.out.println(item);
+        writeInfo.writeStockCode(item.get("keyword").toString());
+
+        // execute Python module
+        executePython.executePython();
+    }
 
     // excute at 09:05:00 everyday
     @Scheduled(cron = "0 5 9 * * *",  zone = "Asia/Seoul")
     public void DBUpdate() throws IOException, ParseException {
         stockItemRepository.deleteAll();
-	readList.readList();
+        readList.readList();
     }
 }

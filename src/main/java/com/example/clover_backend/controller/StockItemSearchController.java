@@ -6,10 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://15.165.181.15:3000")
 @RequestMapping("/search")
 @RequiredArgsConstructor
 public class StockItemSearchController {
@@ -22,7 +23,7 @@ public class StockItemSearchController {
     }
 
     @PostMapping("/eachItem")
-    public List<StockItemSearchResponse> searchStockItems(@RequestBody JSONObject item) {
-        return stockItemService.searchStockItems(item);
+    public void searchStockItems(@RequestBody JSONObject item) throws IOException {
+        stockItemService.searchStockItems(item);
     }
 }
