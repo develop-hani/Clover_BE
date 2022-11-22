@@ -30,7 +30,13 @@ public class ReadSignal {
         long high = (Long) jsonObject.get("high");
         long low = (Long) jsonObject.get("low");
         long close = (Long) jsonObject.get("close");
-        long signal = (Long) jsonObject.get("signal");
+        long signal = 3;
+        Object getSignal = jsonObject.get("signal");
+        if(getSignal instanceof Long){
+            signal = (Long) getSignal;
+        } else if(getSignal instanceof String){
+            signal = -1;
+        }
         String reliability = (String) jsonObject.get("신뢰도");
 
         return SignalResponse.builder()
