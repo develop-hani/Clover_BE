@@ -35,3 +35,4 @@ This repository is Clover's backend repository and the entire project is availab
   - Solved by allocating memory as swap space by using a swap file.
 
 ## Video
+[Introduction](https://www.youtube.com/watch?v=jG0JP-SeEwg&list=PLnKrqpcAkEaZUqkWs9yIvp65edSJn6XuR&index=21)
